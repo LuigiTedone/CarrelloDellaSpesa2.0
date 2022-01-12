@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>additem</ion-title>
+    <ion-button routerLink="/home" ><ion-icon name="add-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content  [fullscreen]="true">
+
+  <form (ngSubmit)="onsubmit()" >
+    <div class="container" >
+        <div class="form-row" *ngFor="let obj of productArray; let i=index">
+
+          
+
+           <div class="form-group col md-4">
+             <label>Name</label><br>
+             <input type="text" name="name{{i}}" (change)="onselectFile($event)" [(ngModel)]="obj.name"><br>
+           </div>   
+
+           <div class="form-group col md-4">
+            <label>Immagine</label><br>
+            <input type="file" name="img{{i}}" [(ngModel)]="obj.img"><br>
+          </div>
+
+           <div  class="form-group col md-4">
+             <label>Quantità</label><br>
+             <input type="text" name="qnt{{i}}" [(ngModel)]="obj.qnt"><br>
+           </div>
+
+          <div class="form-group col md-4">
+            <label>Prezzo</label><br>
+            <input type="text" name="amt{{i}}" [(ngModel)]="obj.amt"><br>
+         </div>
+  
+        </div>
+  <br>
+  <button class="btn btn-primary" >Aggiungi nella lista della Spesa</button>
+  
+</div> 
+</form>
+
+</ion-content>

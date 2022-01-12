@@ -1,20 +1,50 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent]="true" >
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Lista della spesa
     </ion-title>
+
+    <ion-button routerLink="/additem" (click)="CartDetails()"><ion-icon name="add-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content [fullscreen]="true"  color="light" >
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </ion-header> -->
+  
+  <div>
+    
+     <ion-grid> <ion-row >
+        <ion-col >Elemento</ion-col>
+        <ion-col>Nome</ion-col>
+        <ion-col>Quantità</ion-col>
+        <ion-col>Prezzo</ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
+  <div *ngFor="let getCartDetail of getCartDetails" >
+    <ion-grid>
+      <ion-row>
+        <ion-col ><ion-thumbnail><ion-img [src]="getCartDetail.img" ></ion-img></ion-thumbnail></ion-col>
+        <ion-col >{{getCartDetail.name}}</ion-col>
+        <ion-col ><ion-button (click)="delqnttt(getCartDetail.prodId, getCartDetail.qnt)"><ion-icon name="remove-outline"></ion-icon></ion-button><span>{{getCartDetail.qnt}}</span><ion-button (click)="addqnttt(getCartDetail.prodId, getCartDetail.qnt)"><ion-icon name="add-outline"></ion-icon></ion-button></ion-col>
+        <ion-col >{{getCartDetail.amt}}€</ion-col>
+        <ion-col ><ion-button (click)="deleteitem(getCartDetail, getCartDetail.prodId)" ><ion-icon name="trash-outline"></ion-icon></ion-button></ion-col>
+      </ion-row>
+
+    
+       </ion-grid>
+      </div>
+   
+  <div class = "riquadro">
+    <ion-grid>
+      <ion-row>Carrello</ion-row>
+      <ion-row >{{total}}</ion-row>
+    </ion-grid>
+  </div>
+  
 </ion-content>

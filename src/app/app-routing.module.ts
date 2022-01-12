@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'additem',
+    loadChildren: () => import('./additem/additem.module').then( m => m.AdditemPageModule)
+  },
 ];
 
 @NgModule({
