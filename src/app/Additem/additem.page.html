@@ -1,10 +1,9 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>additem</ion-title>
-    <ion-button routerLink="/home" ><ion-icon name="add-outline"></ion-icon></ion-button>
+  <ion-toolbar color="primary">
+    <ion-title>Aggiungi elemento </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content  [fullscreen]="true">
+<ion-content  [fullscreen]="true" color="light">
 
   <form (ngSubmit)="onsubmit()" >
     <div class="container" >
@@ -13,30 +12,43 @@
           
 
            <div class="form-group col md-4">
-             <label>Name</label><br>
-             <input type="text" name="name{{i}}" (change)="onselectFile($event)" [(ngModel)]="obj.name"><br>
+             <ion-item>
+             <ion-label position="floating">Name: </ion-label>
+             <ion-input name="name{{i}}" (change)="onselectFile($event)" [(ngModel)]="obj.name"></ion-input><br>
+            </ion-item>
            </div>   
 
            <div class="form-group col md-4">
-            <label>Immagine</label><br>
+             <ion-item>
+            <ion-label>Immagine</ion-label><br>
             <input type="file" name="img{{i}}" [(ngModel)]="obj.img"><br>
+          </ion-item>
           </div>
 
            <div  class="form-group col md-4">
-             <label>Quantità</label><br>
-             <input type="text" name="qnt{{i}}" [(ngModel)]="obj.qnt"><br>
+             <ion-item>
+             <ion-label position="floating">Quantità: </ion-label>
+             <ion-input name="qnt{{i}}" [(ngModel)]="obj.qnt"></ion-input><br>
+            </ion-item>
            </div>
 
           <div class="form-group col md-4">
-            <label>Prezzo</label><br>
-            <input type="text" name="amt{{i}}" [(ngModel)]="obj.amt"><br>
+            <ion-item>
+            <ion-label position="floating">Prezzo</ion-label>
+            <ion-input name="amt{{i}}" [(ngModel)]="obj.amt"></ion-input><br>
+          </ion-item>
          </div>
   
         </div>
   <br>
-  <button class="btn btn-primary" >Aggiungi nella lista della Spesa</button>
+  <ion-button class="btn btn-primary" (click)="onsubmit()">Aggiungi nella lista della Spesa</ion-button>
   
 </div> 
 </form>
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button routerLink="/home">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 
 </ion-content>

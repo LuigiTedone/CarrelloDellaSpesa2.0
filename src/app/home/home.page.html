@@ -4,20 +4,15 @@
       Lista della spesa
     </ion-title>
 
-    <ion-button routerLink="/additem" (click)="CartDetails()"><ion-icon name="add-outline"></ion-icon></ion-button>
+   
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"  color="light" >
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
-  
-  <div>
-    
-     <ion-grid> <ion-row >
+<ion-content [fullscreen]="true" color="light"> 
+
+  <div>   
+     <ion-grid>
+       <ion-row >
         <ion-col >Elemento</ion-col>
         <ion-col>Nome</ion-col>
         <ion-col>Quantità</ion-col>
@@ -25,26 +20,31 @@
         <ion-col></ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+ </div>
+
   <div *ngFor="let getCartDetail of getCartDetails" >
     <ion-grid>
       <ion-row>
         <ion-col ><ion-thumbnail><ion-img [src]="getCartDetail.img" ></ion-img></ion-thumbnail></ion-col>
         <ion-col >{{getCartDetail.name}}</ion-col>
-        <ion-col ><ion-button (click)="delqnttt(getCartDetail.prodId, getCartDetail.qnt)"><ion-icon name="remove-outline"></ion-icon></ion-button><span>{{getCartDetail.qnt}}</span><ion-button (click)="addqnttt(getCartDetail.prodId, getCartDetail.qnt)"><ion-icon name="add-outline"></ion-icon></ion-button></ion-col>
+        <ion-col ><ion-button (click)="delqnttt(getCartDetail.prodId, getCartDetail.qnt)"><ion-icon class="menopiu"  name="remove-outline"></ion-icon></ion-button><span>{{getCartDetail.qnt}}</span><ion-button (click)="addqnttt(getCartDetail.prodId, getCartDetail.qnt)"><ion-icon class="menopiu" name="add-outline"></ion-icon></ion-button></ion-col>
         <ion-col >{{getCartDetail.amt}}€</ion-col>
         <ion-col ><ion-button (click)="deleteitem(getCartDetail, getCartDetail.prodId)" ><ion-icon name="trash-outline"></ion-icon></ion-button></ion-col>
       </ion-row>
-
-    
-       </ion-grid>
-      </div>
+    </ion-grid>
+  </div>
    
-  <div class = "riquadro">
-    <ion-grid>
+  <div  >
+    <ion-grid  class="totalecarrello">
       <ion-row>Carrello</ion-row>
       <ion-row >{{total}}</ion-row>
     </ion-grid>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/additem" (click)="CartDetails()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   
 </ion-content>
