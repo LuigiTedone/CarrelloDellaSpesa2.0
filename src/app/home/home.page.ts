@@ -92,6 +92,7 @@ export class HomePage {
   
       this.prezzototale();
       }
+      
 
       total:number=0;
       prezzototale(){
